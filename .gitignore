@@ -1,3 +1,5 @@
 *.pkl
 *.ply
 *.pyc
+*.DNG
+*.JPG
