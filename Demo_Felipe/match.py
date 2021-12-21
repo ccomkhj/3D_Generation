@@ -63,10 +63,8 @@ class Match:
         self._view2 = view2
 
         if view1.feature_type in ['sift', 'surf']:
-            logging.info('Performing norm L2 matching')
             self.matcher = cv2.BFMatcher(cv2.NORM_L2, crossCheck=True)
         else:
-            logging.info('Performing norm HAMMING matching')
             self.matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
 
         if not match_path:
@@ -87,6 +85,7 @@ class Match:
             self.indices2
             self.distances
         """
+        logging.info('Computing Matches')
         matches = self.matcher.match(view1.descriptors, view2.descriptors)
         matches = sorted(matches, key=lambda x: x.distance)
 

@@ -15,7 +15,7 @@ import glob
 import logging
 
     
-def create_views(root_path, n, image_format='jpg'):
+def create_views(root_path, n = 0, image_format='jpg'):
     """
     Loops through the images and creates an array of view objects using only
     the root folder path.
@@ -31,7 +31,7 @@ def create_views(root_path, n, image_format='jpg'):
     """
 
     logging.info('Creating View objects of '+ root_path)    
-
+    logging.info('Creating View objects of '+ root_path)    
     feature_path = False
     
     
@@ -42,9 +42,12 @@ def create_views(root_path, n, image_format='jpg'):
     image_paths = sorted(glob.glob(os.path.join(root_path, 'images', '*.' + image_format)))
     
     views = []
-    for image_path in image_paths[0:n]:
-        views.append(View(image_path, root_path, feature_path=feature_path))
-
+    if n > 0:
+        for image_path in image_paths[0:n]:
+            views.append(View(image_path, root_path, feature_path=feature_path))
+    else:
+        for image_path in image_paths:
+            views.append(View(image_path, root_path, feature_path=feature_path))
     return views
 
 
