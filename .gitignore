@@ -3,3 +3,6 @@
 *.pyc
 *.DNG
 *.JPG
+openMVG
+openMVG_Build
+output*
